@@ -39,7 +39,13 @@ extension LoginView {
     }
     
     func layout() {
-        
+        addSubview(usernameTextField)
+        NSLayoutConstraint.activate([
+            usernameTextField.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
+            usernameTextField.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: usernameTextField.trailingAnchor, multiplier: 1)
+            
+        ])
     }
 }
 
