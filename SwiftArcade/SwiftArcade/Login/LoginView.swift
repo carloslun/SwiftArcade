@@ -13,7 +13,7 @@ class LoginView: UIView {
     let stackView = UIStackView()
     let usernameTextField = UITextField()
     let passwordTextField = UITextField()
-    let divisorView = UIView()
+    let dividerView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,10 +25,6 @@ class LoginView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    override var intrinsicContentSize: CGSize {
-//        return CGSize(width: 200, height: 200)
-//    }
 }
 
 extension LoginView {
@@ -49,13 +45,16 @@ extension LoginView {
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
         
-        divisorView.translatesAutoresizingMaskIntoConstraints = false
-        divisorView.backgroundColor = .darkGray
+        dividerView.translatesAutoresizingMaskIntoConstraints = false
+        dividerView.backgroundColor = .darkGray
+        
+        layer.cornerRadius = 5
+        clipsToBounds = true
     }
     
     func layout() {
         stackView.addArrangedSubview(usernameTextField)
-        stackView.addArrangedSubview(divisorView)
+        stackView.addArrangedSubview(dividerView)
         stackView.addArrangedSubview(passwordTextField)
         addSubview(stackView)
         NSLayoutConstraint.activate([
@@ -64,6 +63,8 @@ extension LoginView {
             trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 1),
             bottomAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 1)
         ])
+        dividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
     }
 }
 
@@ -88,4 +89,5 @@ extension LoginView: UITextFieldDelegate{
         
     }
 }
+
 
